@@ -10,12 +10,19 @@ namespace
 {
 	XMVECTOR vFront = { 0,0,1,0 };  //タンクの前方向のベクトル
 	float moveSpeed = 0.1f;         //タンクの移動速度
-
+	enum CAM_TYPE
+	{
+		FIXED_CAM,   //固定カメラ
+		TPS_CAM, //三人称視点カメラ
+		TPS_CAMROT, //三人称視点カメラ(回転)
+		FPS_CAM, //一人称視点カメラ
+		CAM_TYPE_MAX
+	};
 }
 
 
 Tank::Tank(GameObject* parent)
-	:GameObject(parent,"Tank"),hModel_(-1)
+	:GameObject(parent,"Tank"),hModel_(-1),camType_(FIXED_PITCH)
 {
 }
 
@@ -34,6 +41,28 @@ void Tank::Initialize()
 
 void Tank::Update()
 {
+	//カメラ
+	if (Input::IsKeyDown(DIK_C))
+	{
+		camType_ = (camType_ + 1) % CAM_TYPE_MAX;
+		//0,1,2,0,1....CAM_TYPE_MAX -1 の順でcamType_を切り替える
+	}
+	switch (camType_)
+	{
+	case FIXED_CAM:
+		//固定カメラの処理
+		//Camera::SetTarget(XMFLOAT3(0, 0, 0));
+		//Camera::SetTarget(XMFLOAT3(0, 20, -30));
+		break;
+	case TPS_CAM://三人称視点カメラの処理
+		break;
+	case TPS_CAMROT://三人称視点カメラ(回転)の処理
+		break;
+	case FPS_CAM://一人称視点カメラの処理
+		break;
+	}
+
+
 	//回転の処理
 	//Aキーを押している間、左に回転する
 	if (Input::IsKey(DIK_A))
@@ -75,8 +104,10 @@ void Tank::Update()
 	*/
 
 	//デバック用
-	Debug::Log("Yangle = ");
-	Debug::Log(transform_.rotate_.y, true);
+	//Debug::Log("Yangle = ");
+	//Debug::Log(transform_.rotate_.y, true);
+	Debug::Log("camType_ = ");
+	Debug::Log(camType_, true);
 
 
 	//レイキャストして、浮いてたら地面に落とす

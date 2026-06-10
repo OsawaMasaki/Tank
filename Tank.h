@@ -14,5 +14,6 @@ public:
     void Release() override;
 private:
     int hModel_;//地形モデルのハンドル
+    int camType_;//カメラのタイプ
 };
 

@@ -15,5 +15,6 @@ public:
 private:
     int hModel_;//地形モデルのハンドル
     int camType_;//カメラのタイプ
+    void SetFixedCam();
 };
 

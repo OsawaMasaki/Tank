@@ -37,7 +37,7 @@ void Tank::Initialize()
 	hModel_ = Model::Load("TankBody.fbx");
 	assert(hModel_ >= 0);
 
-	transform_.rotate_ = { transform_.position_.x,transform_.position_.y,0.0f };
+	transform_.position_ = { transform_.position_.x,transform_.position_.y,0.0f };
 	transform_.rotate_ = { 0.0f,transform_.rotate_.y,0.0f };
 }
 

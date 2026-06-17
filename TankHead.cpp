@@ -2,6 +2,7 @@
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Engine/Debug.h"
+#include "Tank.h"
 
 namespace
 {

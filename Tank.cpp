@@ -4,13 +4,15 @@
 #include "Engine/Debug.h"
 #include "Ground.h"
 #include "Engine/Camera.h"
+#include "TankHead.h"
+
 
 //タンクのボディのクラス
 
 namespace
 {
 	XMVECTOR vFront = { 0,0,1,0 };  //タンクの前方向のベクトル
-	float moveSpeed = 0.1f;         //タンクの移動速度
+	float moveSpeed = 2.1f;         //タンクの移動速度
 	const float CAM_HEIGHT_BIAS = 0.2f; //カメラの高さのバイアス
 	enum CAM_TYPE
 	{
@@ -37,8 +39,10 @@ void Tank::Initialize()
 	hModel_ = Model::Load("TankBody.fbx");
 	assert(hModel_ >= 0);
 
-	transform_.position_ = { transform_.position_.x,transform_.position_.y,0.0f };
-	transform_.rotate_ = { 0.0f,transform_.rotate_.y,0.0f };
+	//transform_.position_ = { transform_.position_.x,transform_.position_.y,0.0f };
+	//transform_.rotate_ = { 0.0f,transform_.rotate_.y,0.0f };
+
+	Instantiate<TankHead>(this);
 }
 
 void Tank::Update()

@@ -12,7 +12,7 @@
 namespace
 {
 	XMVECTOR vFront = { 0,0,1,0 };  //タンクの前方向のベクトル
-	float moveSpeed = 2.1f;         //タンクの移動速度
+	float moveSpeed = 0.1f;         //タンクの移動速度
 	const float CAM_HEIGHT_BIAS = 0.2f; //カメラの高さのバイアス
 	enum CAM_TYPE
 	{
@@ -116,6 +116,13 @@ void Tank::Update()
 		//transform_.position_.z += 0.1f;
 
 		vPos = vPos + moveSpeed * vMove;
+		XMStoreFloat3(&transform_.position_, vPos); //ストア：書き込み
+	}
+	if (Input::IsKey(DIK_DOWN) || Input::IsKey(DIK_S))
+	{
+		//transform_.position_.z += 0.1f;
+
+		vPos = vPos - moveSpeed * vMove;
 		XMStoreFloat3(&transform_.position_, vPos); //ストア：書き込み
 	}
 	/*

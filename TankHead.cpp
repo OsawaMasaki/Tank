@@ -1,7 +1,7 @@
 #include "TankHead.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
-#include "Engine/Debug.h"
+//#include "Engine/Debug.h"
 #include "Tank.h"
 #include "Bullet.h"
 
@@ -27,16 +27,16 @@ void TankHead::Initialize()
 
 void TankHead::Update()
 {
-	if (Input::IsKey(DIK_RIGHT) && transform_.rotate_.y <= 90.0f)
+	if (Input::IsKey(DIK_RIGHT) && transform_.rotate_.y <= 150.0f)
 	{
 		transform_.rotate_.y += 1.0f;
 	}
-	if (Input::IsKey(DIK_LEFT))
+	if (Input::IsKey(DIK_LEFT) && transform_.rotate_.y >= -150.0f)
 	{
 		transform_.rotate_.y -= 1.0f;
 	}
 
-	if (Input::IsKeyDown(DIK_SPACE))
+	if (Input::IsKey(DIK_SPACE))
 	{
 		XMFLOAT3 cannonTop = Model::GetBonePosition(hModel_, "Top");
 		XMFLOAT3 cannonRoot = Model::GetBonePosition(hModel_, "Root");

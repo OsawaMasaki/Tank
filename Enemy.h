@@ -12,7 +12,9 @@ public:
     void Update() override;
     void Draw() override;
     void Release() override;
+    void OnCollision(GameObject* pTarget);
 private:
     int hModel_;   //地形モデルのハンドル
+    int count_;
 };
 

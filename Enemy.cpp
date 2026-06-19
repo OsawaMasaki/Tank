@@ -4,7 +4,7 @@
 #include "Ground.h"
 
 Enemy::Enemy(GameObject* parent)
-	:GameObject(parent, "Enemy"), hModel_(-1)
+	:GameObject(parent, "Enemy"), hModel_(-1),count_(40)
 {
 }
 
@@ -13,7 +13,8 @@ void Enemy::Initialize()
 	hModel_ = Model::Load("Enemy.fbx");
 	assert(hModel_ >= 0);
 
-	transform_.position_ = { 0,0,0 };
+	SphereCollider* collider = new SphereCollider(XMFLOAT3(0.0f, 0.0f, 0.0f), 0.5f);
+	AddCollider(collider);
 }
 
 void Enemy::Update()
@@ -45,4 +46,13 @@ void Enemy::Draw()
 
 void Enemy::Release()
 {
+}
+
+void Enemy::OnCollision(GameObject* pTarget)
+{
+	if (pTarget->GetObjectName() == "Bullet")
+	{
+		pTarget->KillMe();
+		KillMe();
+	}
 }

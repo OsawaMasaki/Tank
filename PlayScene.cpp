@@ -5,7 +5,7 @@
 //#include "TankHead.h"
 
 PlayScene::PlayScene(GameObject* parent)
-	:GameObject(parent,"PlayScene")
+	:GameObject(parent,"PlayScene"),timer(0)
 {
 }
 

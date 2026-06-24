@@ -29,7 +29,7 @@ void Enemy::Initialize()
 	float EnemyPosz = dist(engine);
 
 	transform_.position_ = { EnemyPosx, 0, EnemyPosz };
-	SphereCollider* collider = new SphereCollider(XMFLOAT3(0.0f, 0.0f, 0.0f), 0.5f);
+	SphereCollider* collider = new SphereCollider(XMFLOAT3(0.0f, 0.0f, 0.0f), 10.5f);
 	AddCollider(collider);
 }
 

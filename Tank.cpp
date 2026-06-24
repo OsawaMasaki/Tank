@@ -77,7 +77,7 @@ void Tank::Update()
 	case TPS_CAMROT://三人称視点カメラ(回転)の処理
 	{
 		XMFLOAT3 camPos;//タンクの位置をカメラの位置にする
-		XMVECTOR vCAM = { 0.0f,3.0f,-7.0f,0.0f };//カメラの位置をタンクの位置より少し後ろに
+		XMVECTOR vCAM = { 0.0f,5.0f,-17.0f,0.0f };//カメラの位置をタンクの位置より少し後ろに
 		vCAM = XMVector3TransformCoord(vCAM, matRot); //タンクの回転をカメラの位置に反映させる
 		XMStoreFloat3(&camPos,vPos + vCAM);
 		Camera::SetPosition(camPos); //カメラの位置

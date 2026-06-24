@@ -20,6 +20,17 @@ void PlayScene::Initialize()
 
 void PlayScene::Update()
 {
+	timer++;
+	if (timer > 300)
+	{
+		timer = 0;
+	}
+	if (timer == 90)
+	{
+		Instantiate<Enemy>(this);
+		Instantiate<Enemy>(this);
+	}
+
 }
 
 void PlayScene::Draw()

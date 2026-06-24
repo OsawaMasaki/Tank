@@ -2,6 +2,7 @@
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Ground.h"
+#include <random>
 
 Enemy::Enemy(GameObject* parent)
 	:GameObject(parent, "Enemy"), hModel_(-1),count_(40)
@@ -11,8 +12,23 @@ Enemy::Enemy(GameObject* parent)
 void Enemy::Initialize()
 {
 	hModel_ = Model::Load("Enemy.fbx");
+	Model::SetAnimFrame(hModel_, 1, 100, 0.5f);
 	assert(hModel_ >= 0);
 
+
+	// --- 初期化処理（関数やループの外、または静的変数として1回だけ行うのがベスト） ---
+	std::random_device seed_gen;
+	std::mt19937 engine(seed_gen());
+	// -25.0f から 25.0f の範囲を指定
+	std::uniform_real_distribution<float> dist(-20.0f, 20.0f);
+
+
+	// --- 実際の座標設定の処理 ---
+	// ランダムな値を生成して代入
+	float EnemyPosx = dist(engine);
+	float EnemyPosz = dist(engine);
+
+	transform_.position_ = { EnemyPosx, 0, EnemyPosz };
 	SphereCollider* collider = new SphereCollider(XMFLOAT3(0.0f, 0.0f, 0.0f), 0.5f);
 	AddCollider(collider);
 }

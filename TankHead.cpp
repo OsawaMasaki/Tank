@@ -36,7 +36,7 @@ void TankHead::Update()
 		transform_.rotate_.y -= 1.0f;
 	}
 
-	if (Input::IsKey(DIK_SPACE))
+	if (Input::IsKeyDown(DIK_SPACE))
 	{
 		XMFLOAT3 cannonTop = Model::GetBonePosition(hModel_, "Top");
 		XMFLOAT3 cannonRoot = Model::GetBonePosition(hModel_, "Root");

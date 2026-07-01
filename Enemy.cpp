@@ -11,7 +11,7 @@ Enemy::Enemy(GameObject* parent)
 
 void Enemy::Initialize()
 {
-	hModel_ = Model::Load("Enemy.fbx");
+	hModel_ = Model::Load("kusa.fbx");
 	Model::SetAnimFrame(hModel_, 1, 100, 0.5f);
 	assert(hModel_ >= 0);
 
@@ -28,7 +28,9 @@ void Enemy::Initialize()
 	float EnemyPosx = dist(engine);
 	float EnemyPosz = dist(engine);
 
-	transform_.position_ = { EnemyPosx, 0, EnemyPosz };
+	transform_.scale_.y = 1.0f;
+
+	transform_.position_ = { EnemyPosx, 10, EnemyPosz };
 	SphereCollider* collider = new SphereCollider(XMFLOAT3(0.0f, 0.0f, 0.0f), 10.5f);
 	AddCollider(collider);
 }

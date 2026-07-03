@@ -12,7 +12,9 @@ Enemy::Enemy(GameObject* parent)
 void Enemy::Initialize()
 {
 	//hModel_ = Model::Load("kusa.fbx");
-	hModel_ = Model::Load("kasasuraimu.fbx");
+	//hModel_ = Model::Load("kasasuraimu.fbx");
+	hModel_ = Model::Load("guile.fbx");
+	//hModel_ = Model::Load("Walking.fbx");
 	//Model::SetAnimFrame(hModel_, 1, 120, 1.0f);
 	Model::SetAnimFrame(hModel_, 1, 120, 1.0f);
 	assert(hModel_ >= 0);

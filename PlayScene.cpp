@@ -2,6 +2,9 @@
 #include "Ground.h"
 #include "Tank.h"
 #include "Enemy.h"
+#include "Engine/SceneManager.h"
+#include "Engine/Input.h"
+
 //#include "TankHead.h"
 
 PlayScene::PlayScene(GameObject* parent)
@@ -21,7 +24,7 @@ void PlayScene::Initialize()
 void PlayScene::Update()
 {
 	timer++;
-	if (timer > 300)
+	if (timer > 400)
 	{
 		timer = 0;
 	}
@@ -31,6 +34,12 @@ void PlayScene::Update()
 		Instantiate<Enemy>(this);
 	}
 
+	if (FindObject("Enemy") == nullptr)
+	{
+		SceneManager* pSceneManager = (SceneManager*)(this->GetParent());
+		pSceneManager->ChangeScene(SCENE_ID_CLEAR);
+
+	}
 }
 
 void PlayScene::Draw()

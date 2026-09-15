@@ -35,7 +35,7 @@ void Enemy::Initialize()
 	//transform_.scale_.y = 1.0f;
 
 	transform_.position_ = { EnemyPosx, 10, EnemyPosz };
-	SphereCollider* collider = new SphereCollider(XMFLOAT3(0.0f, 0.0f, 0.0f), 10.5f);
+	SphereCollider* collider = new SphereCollider(XMFLOAT3(0.0f, 0.0f, 0.0f), 1.6f);
 	AddCollider(collider);
 }
 

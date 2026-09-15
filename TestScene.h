@@ -1,5 +1,7 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include "Engine/Model.h"
+
 
 //テストシーンを管理するクラス
 class TestScene : public GameObject
@@ -20,4 +22,9 @@ public:
 
 	//開放
 	void Release() override;
+private:
+	int hTitlePic_; //タイトル画像のハンドル
+	int hTextPic_; //文字画像のハンドル
+	int WIN_WIDTH = 1280;
+	int WIN_HEIGHT = 720;
 };
